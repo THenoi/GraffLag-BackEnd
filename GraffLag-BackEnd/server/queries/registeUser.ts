@@ -1,15 +1,18 @@
 
 import { User } from './../models/model';
 
-export function registerUser( login?: string,password?:string,email?:string,gender?:string,birthdate?:Date) {
-
-    let insertuser = User.build({
-        login: login,
-        password: password,
-        email: email,
-        gender: gender,
-        birthdate: birthdate
+export function registerUser( params:any) {
+    
+    const insertuser = User.build({
+        login: params.login,
+        password: params.password,
+        email: params.email,
+        gender: params.gender,
+        birthdate: params.birthdate,
+        phone:params.phone
     })
-     insertuser.save();
 
+     insertuser.save().then(data => data)
+
+    
 }
