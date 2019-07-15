@@ -33,7 +33,17 @@ user.init({
              },
             updatedAt: {
                type: DataTypes.DATE,
-             }
+             },
+             phone: {
+              type: DataTypes.NUMBER,
+            },
+            status: {
+              type: DataTypes.STRING,
+            },
+            nickname: {
+              type: DataTypes.STRING,
+            },
+
             
 },
  { 
