@@ -14,12 +14,14 @@ user.init({
                primaryKey: true
              },
              username:{
+               unique:true,
                type: DataTypes.STRING,
              },
              password:{
                type: DataTypes.STRING,
              },
              email:{
+              unique:true,
                type: DataTypes.STRING,
              },
              gender:{
@@ -35,6 +37,7 @@ user.init({
                type: DataTypes.DATE,
              },
              phone: {
+              unique:true,
               type: DataTypes.NUMBER,
             },
             status: {
