@@ -1,11 +1,11 @@
 
 
 import {Request, Response} from 'express';
-import { deleteUser } from '../queries/deleteUser';
+import { postdelete } from '../queries/postquey';
 
-export function apiGetPostd(req:Request, res:Response) {
+export function apiPostDelete(req:Request, res:Response) {
 
-    deleteUser(req.body)
+    postdelete(req.body)
         
    .then((data) =>res.json(data))
    .catch(()  =>  res.status(500));

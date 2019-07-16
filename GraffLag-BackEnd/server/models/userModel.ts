@@ -13,7 +13,7 @@ user.init({
                autoIncrement: true,
                primaryKey: true
              },
-             login:{
+             username:{
                type: DataTypes.STRING,
              },
              password:{

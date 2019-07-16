@@ -7,7 +7,16 @@ import { Sequelize, Model, DataTypes, BuildOptions } from 'sequelize';
 import { initRestApi } from './api/api';
 
 const dbUrl = 'postgres://postgres:Mamicuta2828@localhost:5432/GraffLag'
-const sequelize: Sequelize = new Sequelize(dbUrl);
+const sequelize: Sequelize = new Sequelize(dbUrl,{
+    dialect: "postgres",
+    port:    5432,
+    define: {
+      underscored: true,
+      timestamps: false
+    },
+    sync: { force: true },
+    omitNull: true
+  });
 
 
 sequelize.authenticate().then(() => {

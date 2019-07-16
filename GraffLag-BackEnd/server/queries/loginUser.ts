@@ -1,18 +1,19 @@
+import { IUser } from './../../../../GraffLag/src/app/interfaces/IUser';
 
 import { User } from './../models/model';
 
-import {Md5} from 'ts-md5/dist/md5';
 
-
-export function loginUser(params:any)
+export function loginUser(data:IUser)
 {    
-     
-      return User.findAll({where:{login:params.login,password:params.password}}).then((data) => data);
       
+
+     return User.findOne({where:{username:data.username,password:data.password}}).then((data) => data);
      
+      
 }
+
 
 export function loginUserId(id: number)
 {
-     return User.findAll({where: {userid:id}}).then(data => (data))
+     return User.findOne({where: {userid:id}}).then(data => (data))
 }

@@ -1,8 +1,8 @@
 import {Request, Response} from 'express';
 
-import { loginUser, loginUserId } from '../queries/loginUser';
+import { loginUserId } from '../queries/loginUser';
 
-export function apiGetLoginId(req:Request, res:Response) {
+export function apiGetUserById(req:Request, res:Response) {
 
     const id = parseInt(req.params.id);
    loginUserId(id)

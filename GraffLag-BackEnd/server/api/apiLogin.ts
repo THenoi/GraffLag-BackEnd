@@ -3,7 +3,8 @@
 import {Request, Response} from 'express';
 import { loginUser } from '../queries/loginUser';
 
-export function apiGetLogin(req:Request, res:Response) {
+export function apiLogin(req:Request, res:Response) {
+    
     loginUser(req.body)
     
    .then((data) =>res.json(data))

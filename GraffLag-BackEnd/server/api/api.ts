@@ -1,30 +1,36 @@
 
 import {Application} from "express";
-import { apiGetLogin } from "./apiGetLogin";
-import { apiGetReg } from "./apiGetReg";
-import { apiGetLoginId } from "./apiGetLoginId";
 
-import { apiGetDelete } from "./apiGetDelete";
-import { apigetUpdate } from "./apiGetUpdate";
-import { apiGetPostu } from "./apiGetPostu";
-import { apiGetPostup } from "./apiGetPostup";
-import { apiGetPostd } from "./apiGetPostd";
-import { apiGetPostGetAll } from "./apiGetPostGetAll";
+import { apiLogin } from "./apiLogin";
+import { apiRegister } from "./apiRegister";
+import { apiGetUserById } from "./apiGetUserById";
+
+import { apiDelete } from "./apiDelete";
+import { apiUpdate } from "./apiUpdate";
+import { apiGetPostUpload } from "./apiGetPostUpload";
+import { apiPostUpdate } from "./apiPostUpdate";
+import { apiGetUserPosts } from "./apiGetUserPosts";
 import { apiGetNews } from "./apiGetNews";
+import { apiPostDelete } from "./apiPostDelete";
 
 
 
 export function initRestApi(app:Application) {
 
-    app.route('/api/reg').post(apiGetReg);
-    app.route('/api/login').post(apiGetLogin);
-    app.route('/api/login/:id').post(apiGetLoginId);
-    app.route('/api/delete').post(apiGetDelete);
-    app.route('/api/update').post(apigetUpdate);
-    app.route('/api/postu').post(apiGetPostu);
-    app.route('/api/postup').post(apiGetPostup);
-    app.route('/api/postd').post(apiGetPostd);
-    app.route('/api/postgetall').post(apiGetPostGetAll);
-    app.route('/api/news').post(apiGetNews);
+    app.route('/api/reg').post(apiRegister);
+    app.route('/api/login').post(apiLogin);
+    app.route('/api/delete').post(apiDelete);
+    app.route('/api/update').post(apiUpdate);
+    
+    app.route('/api/postupload').post(apiGetPostUpload);
+    app.route('/api/postupdate').post(apiPostUpdate);
+    app.route('/api/postdelete').post(apiPostDelete);
+
+
+    app.route('/api/login/:id').get(apiGetUserById);
+    app.route('/api/user/:userid/posts').get(apiGetUserPosts);
+    app.route('/api/news').get(apiGetNews);
+
+    
     
 }
