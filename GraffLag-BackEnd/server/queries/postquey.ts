@@ -3,7 +3,6 @@ import { IPost } from './../../../../GraffLag/src/app/interfaces/IPost';
 
 import { Post, Like } from './../models/model';
 
-
 export function postupload(params: IPost) {
 
 
@@ -14,6 +13,7 @@ export function postupload(params: IPost) {
           authore:params.authore,
      })
 
+     console.log(post.save().then(data => data));
      
      return post.save().then(data => data)
 }
