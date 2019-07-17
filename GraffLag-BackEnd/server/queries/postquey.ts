@@ -1,21 +1,18 @@
-import { IPost } from './../../../../GraffLag/src/app/interfaces/IPost';
+import { IPost, IPostComment } from './../../../../GraffLag/src/app/interfaces/IPost';
 
 
-import { Post, Like } from './../models/model';
+import { Post, PostComment } from './../models/model';
 
 export function postupload(params: IPost) {
 
 
-     const post = Post.build({
+      return Post.create({
           text:params.text,
           userid:params.userid,
           privacy:params.privacy,
           authore:params.authore,
-     })
+     }).then(data => data)
 
-     console.log(post.save().then(data => data));
-     
-     return post.save().then(data => data)
 }
 
 export function postupdate(params: IPost) {
@@ -37,15 +34,18 @@ export function news() {
      return Post.findAll({where: {privacy:"Public"}}).then(data => (data))
 }
 
-export function like(params:any) {
+export function getPostsComments(postid:number) {
+     return PostComment.findAll({ where: {postid:postid}}).then(data => data)
+}
 
+export function addPostsComments(params: IPostComment) {
 
-        return Like.findOrCreate({
-          where: {postid:params.postid,userid:params.userid},
-          defaults: {
-               userid:params.userid,
-               postid:params.postid
-          }
-        }).then(data => data)
+     
+    return PostComment.create({
+         userid:params.userid,
+         comment:params.comment,
+         authore:params.authore,
+     }).then((data) => data)
 
+ 
 }
