@@ -30,7 +30,12 @@ post.init({
             },
             updatedAt:{
               type: DataTypes.DATE,
+            },
+
+            authore:{
+              type: DataTypes.STRING,
             }
+
        
 
 },

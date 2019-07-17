@@ -1,21 +1,24 @@
+import { IPost } from './../../../../GraffLag/src/app/interfaces/IPost';
 
-import { User, Post } from './../models/model';
+
+import { Post, Like } from './../models/model';
 
 
-export function postupload(params: any) {
+export function postupload(params: IPost) {
 
 
      const post = Post.build({
           text:params.text,
           userid:params.userid,
           privacy:params.privacy,
+          authore:params.authore,
      })
 
      
      return post.save().then(data => data)
 }
 
-export function postupdate(params: any) {
+export function postupdate(params: IPost) {
      // return User.findAll({where: {userid:id}}).then(data => (data))
 }
 
@@ -32,4 +35,17 @@ export function userPosts(userid: number) {
 
 export function news() {
      return Post.findAll({where: {privacy:"Public"}}).then(data => (data))
+}
+
+export function like(params:any) {
+
+
+        return Like.findOrCreate({
+          where: {postid:params.postid,userid:params.userid},
+          defaults: {
+               userid:params.userid,
+               postid:params.postid
+          }
+        }).then(data => data)
+
 }
