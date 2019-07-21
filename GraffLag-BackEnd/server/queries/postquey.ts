@@ -1,11 +1,10 @@
 import { IPost, IPostComment } from './../../../../GraffLag/src/app/interfaces/IPost';
 
 
-import { Post, PostComment } from './../models/model';
+import { Post, PostComment, Like } from './../models/model';
 
 export function postupload(params: IPost) {
-
-
+    
       return Post.create({
           text:params.text,
           userid:params.userid,
@@ -35,6 +34,7 @@ export function news() {
 }
 
 export function getPostsComments(postid:number) {
+
      return PostComment.findAll({ where: {postid:postid}}).then(data => data)
 }
 
@@ -42,10 +42,25 @@ export function addPostsComments(params: IPostComment) {
 
      
     return PostComment.create({
+         postid:params.postid,
          userid:params.userid,
          comment:params.comment,
          authore:params.authore,
      }).then((data) => data)
 
  
+}
+
+export function postLikeRequest(params: IPost) {
+    
+     return Like.create({
+         userid:params.userid,
+         postid:params.postid,
+    }).then(data => data)
+
+}
+export function deletePostComment(params: IPostComment) {
+    
+     return PostComment.destroy({where :{commentid:params.commentid,userid:params.userid,postid:params.postid}}).then(data => data)
+
 }

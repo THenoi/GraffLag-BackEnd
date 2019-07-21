@@ -53,6 +53,7 @@ user.init({
       sequelize,
       tableName: 'user',
       timestamps: true,
+      omitNull:true,
 
 
  });

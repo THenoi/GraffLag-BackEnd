@@ -4,9 +4,7 @@ import { where } from 'sequelize/types';
 import { Op } from 'sequelize';
 
 
-export function GetAllProfilesQuery(userid:number)
+export function GetAllProfilesQuery(data:number)
 {   
-    console.log(User.findAll({where : {[Op.ne]: {userid:userid} }}).then((data)=>data));
-    
-    return User.findAll({where : {[Op.ne]: {userid:userid} }}).then((data)=>data);
+    return User.findAll({where :  {userid: {[Op.ne]: data}} }).then((data)=>data);
 }

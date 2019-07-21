@@ -6,9 +6,8 @@ import { Op } from 'sequelize';
 
 export function loginUser(data:IUser)
 {   
-     const a = User.findOne({where:{[Op.or]: [{username: data.username}, {email: data.username}], password:data.password  }}).then((data) => data); 
-     console.log(User.findOne({where:{[Op.or]: [{username: data.username}, {email: data.username}], password:data.password  }}).then((data) => data));
-     return(a);
+     return User.findOne({where:{[Op.or]: [{username: data.username}, {email: data.username}], password:data.password  }}).then((data) => data); 
+   
      
 }
 
